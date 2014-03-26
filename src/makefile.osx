@@ -6,7 +6,7 @@
 # Mac OS X makefile for bitcoin
 # Originally by Laszlo Hanyecz (solar@heliacal.net)
 
-CXX=llvm-g++
+CXX=/usr/bin/clang++
 DEPSDIR=/opt/local
 
 INCLUDEPATHS= \
@@ -62,7 +62,7 @@ ifdef RELEASE
 # Compile for maximum compatibility and smallest size.
 # This requires that dependencies are compiled
 # the same way.
-CFLAGS = -mmacosx-version-min=10.5 -arch i386 -O3
+CFLAGS = -pipe -mmacosx-version-min=10.8 -arch i386 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -O2 -arch i386 -pthread -Wall -W $(DEFINES)
 else
 DEBUGFLAGS = -g
 endif
